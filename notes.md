@@ -37,3 +37,17 @@ basically an "eloquent" playground
 `$variable = App\Task::first();`
 
 `$variable->method();`
+
+`composer dump-autoload` Regenerate autoload files (Doing this after `php artisan make:model Task -m` throws and error `Failed to open stream: No such file or directory`)
+
+`php artisan make:model [Name] -m` Build a migration AND a model for an object
+
+
+Adding content to db via `php artisan tinker`
+`$task = new App\Task;`
+`$task->body = 'Go to the market';`
+`$task->save();`
+
+`App\Task::first()->completed;`
+
+`App\Task::where('completed', 1)->get();`
