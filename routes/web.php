@@ -11,22 +11,30 @@
 |
 */
 
+
+// No longer need this now that this is called in controller
 use App\Task; // Allows one to remove the App\ prefix
 
-Route::get('/tasks', function () {
-    $tasks = App\Task::all(); //Eloquent
+Route::get('/tasks', 'TasksController@index');
+Route::get('/tasks/{task}', 'TasksController@show');
 
-    return view('tasks.index', compact('tasks'));
-});
 
-Route::get('/tasks/{task}', function ($id) {
-    //$task = DB::table('tasks')->find($id);
-
-    //$task = App\Task::where('id', '=', $id);
-    $task = App\Task::find($id);
-
-    return view('tasks.show', compact('task'));
-});
+// Removed and moved to TasksController.php
+//---------------------------------------------------
+// Route::get('/tasks', function () {
+//     $tasks = App\Task::all(); //Eloquent
+//
+//     return view('tasks.index', compact('tasks'));
+// });
+// Route::get('/tasks/{task}', function ($id) {
+//     //$task = DB::table('tasks')->find($id);
+//
+//     //$task = App\Task::where('id', '=', $id);
+//     $task = App\Task::find($id);
+//
+//     return view('tasks.show', compact('task'));
+// });
+//---------------------------------------------------
 
 // Route::get('/', function () {
 //     //$tasks = DB::table('tasks')->get();
